@@ -1,9 +1,22 @@
-<header style="background: linear-gradient(to right, #0077B6, #00A8E8); padding: 20px 40px; color: white; display: flex; justify-content: space-between; align-items: center; font-family: 'Segoe UI', sans-serif;">
-  <div style="font-size: 24px; font-weight: bold;">SmartTech</div>
-  <nav>
-    <a href="#" style="margin: 0 15px; color: white; text-decoration: none;">الرئيسية</a>
-    <a href="#" style="margin: 0 15px; color: white; text-decoration: none;">المنتجات</a>
-    <a href="#" style="margin: 0 15px; color: white; text-decoration: none;">العروض</a>
-    <a href="#" style="margin: 0 15px; color: white; text-decoration: none;">تواصل معنا</a>
-  </nav>
+<header style="background: linear-gradient(to right, #0077B6, #00A8E8); padding: 15px 30px; color: white;">
+  <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap;">
+    <div><h1 style="margin: 0;">SmartTech</h1></div>
+
+    <nav style="display: flex; gap: 20px;">
+      <a href="{% url 'home' %}" style="color: white; text-decoration: none;">الرئيسية</a>
+      <a href="#" style="color: white; text-decoration: none;">المنتجات</a>
+      <a href="#" style="color: white; text-decoration: none;">العروض</a>
+      <a href="#" style="color: white; text-decoration: none;">تواصل معنا</a>
+    </nav>
+
+    <div style="display: flex; gap: 10px;">
+      {% if user.is_authenticated %}
+        <span style="color: #FFF;">مرحباً {{ user.username }}</span>
+        <a href="{% url 'logout' %}" style="background-color: #FF6666; color: white; padding: 5px 12px; border-radius: 5px; text-decoration: none;">تسجيل الخروج</a>
+      {% else %}
+        <a href="{% url 'login' %}" style="background-color: white; color: #0077B6; padding: 5px 12px; border-radius: 5px; text-decoration: none;">تسجيل الدخول</a>
+        <a href="{% url 'register' %}" style="background-color: #FFD700; color: black; padding: 5px 12px; border-radius: 5px; text-decoration: none;">تسجيل حساب</a>
+      {% endif %}
+    </div>
+  </div>
 </header>

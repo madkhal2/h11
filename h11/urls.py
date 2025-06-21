@@ -5,13 +5,11 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-
-    # روابط التطبيقات
     path('accounts/', include('accounts.urls')),
-    path('store/', include('store.urls')),
     path('orders/', include('orders.urls')),
+    path('', include('store.urls')),
 ]
 
-# دعم عرض الملفات الإعلامية أثناء التطوير
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATICFILES_DIRS[0])
