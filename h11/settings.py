@@ -4,7 +4,7 @@ from pathlib import Path
 # المسار الأساسي للمشروع
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# مفتاح التشفير (يجب تغييره في بيئة الإنتاج)
+# مفتاح التشفير (قم بتغييره في بيئة الإنتاج)
 SECRET_KEY = 'django-insecure-ضع_مفتاحك_الخاص_هنا'
 
 # وضع التصحيح
@@ -21,13 +21,13 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    # التطبيقات الخاصة بالمشروع
+    # تطبيقات المشروع
     'accounts',
     'store',
     'orders',
 ]
 
-# ميدلوير
+# الميدلوير
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -42,11 +42,11 @@ MIDDLEWARE = [
 # إعدادات الروابط
 ROOT_URLCONF = 'h11.urls'
 
-# القوالب
+# القوالب (templates)
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates'],  # مجلد القوالب العام
+        'DIRS': [BASE_DIR / 'templates'],  # هذا يربط C:\Users\Weaam\h11\templates
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -59,6 +59,7 @@ TEMPLATES = [
     },
 ]
 
+# WSGI
 WSGI_APPLICATION = 'h11.wsgi.application'
 
 # قاعدة البيانات
@@ -92,13 +93,13 @@ USE_I18N = True
 USE_L10N = True
 USE_TZ = True
 
-# الملفات الثابتة
+# الملفات الثابتة (Static)
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [BASE_DIR / "static"]
 
-# ملفات الوسائط
+# ملفات الوسائط (Media)
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
-# الحقل الافتراضي للمفاتيح الأساسية
+# الحقول التلقائية
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
