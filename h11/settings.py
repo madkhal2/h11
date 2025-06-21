@@ -25,6 +25,10 @@ INSTALLED_APPS = [
     'accounts',
     'store',
     'orders',
+
+    # Cloudinary
+    'cloudinary',
+    'cloudinary_storage',
 ]
 
 # الميدلوير
@@ -96,13 +100,18 @@ USE_TZ = True
 # ✅ الملفات الثابتة (Static)
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
-    BASE_DIR / 'h11' / 'static'  # المجلد الذي تضع فيه ملفات CSS/JS
+    BASE_DIR / 'h11' / 'static'
 ]
-STATIC_ROOT = BASE_DIR / 'staticfiles'  # مجلد تجميع static عند استخدام collectstatic
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 
-# ✅ ملفات الوسائط (Media)
-MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR / 'media'
+# ✅ Cloudinary كخدمة لتخزين الصور (Media)
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': 'dgvoyuawe',
+    'API_KEY': '155166337516544',
+    'API_SECRET': 'gJJN1t6KXbyiSyPwVMR3gAYrh_I',
+}
+
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 # الحقول التلقائية
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
