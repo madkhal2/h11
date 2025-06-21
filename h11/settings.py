@@ -4,17 +4,15 @@ from pathlib import Path
 # المسار الأساسي للمشروع
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# مفتاح التشفير
+# مفتاح التشفير (يجب تغييره في بيئة الإنتاج)
 SECRET_KEY = 'django-insecure-ضع_مفتاحك_الخاص_هنا'
 
-# وضع التطوير (غير مفعل للإنتاج)
+# وضع التصحيح
 DEBUG = True
 
 ALLOWED_HOSTS = []
 
-# -------------------------
 # التطبيقات المثبتة
-# -------------------------
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -23,19 +21,17 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    # تطبيقات المشروع
+    # التطبيقات الخاصة بالمشروع
     'accounts',
     'store',
     'orders',
 ]
 
-# -------------------------
-# الوسيطات (Middleware)
-# -------------------------
+# ميدلوير
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.locale.LocaleMiddleware',  # لدعم اللغات
+    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -43,18 +39,14 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-# -------------------------
-# عناوين الروابط الجذرية
-# -------------------------
-ROOT_URLCONF = 'ecommerce_project.urls'
+# إعدادات الروابط
+ROOT_URLCONF = 'h11.urls'
 
-# -------------------------
-# القوالب (Templates)
-# -------------------------
+# القوالب
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates'],
+        'DIRS': [BASE_DIR / 'templates'],  # مجلد القوالب العام
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -67,14 +59,9 @@ TEMPLATES = [
     },
 ]
 
-# -------------------------
-# WSGI
-# -------------------------
-WSGI_APPLICATION = 'ecommerce_project.wsgi.application'
+WSGI_APPLICATION = 'h11.wsgi.application'
 
-# -------------------------
 # قاعدة البيانات
-# -------------------------
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -82,9 +69,7 @@ DATABASES = {
     }
 }
 
-# -------------------------
-# التحقق من كلمة المرور
-# -------------------------
+# التحقق من كلمات المرور
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -100,28 +85,20 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-# -------------------------
-# اللغة والمنطقة الزمنية
-# -------------------------
+# اللغة والتوقيت
 LANGUAGE_CODE = 'ar'
 TIME_ZONE = 'Asia/Riyadh'
 USE_I18N = True
 USE_L10N = True
 USE_TZ = True
 
-# -------------------------
 # الملفات الثابتة
-# -------------------------
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [BASE_DIR / "static"]
 
-# -------------------------
-# الملفات الإعلامية
-# -------------------------
+# ملفات الوسائط
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
-# -------------------------
-# الإعدادات الافتراضية
-# -------------------------
+# الحقل الافتراضي للمفاتيح الأساسية
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
