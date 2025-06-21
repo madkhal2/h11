@@ -96,8 +96,9 @@ USE_TZ = True
 # ✅ الملفات الثابتة (Static)
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
-    BASE_DIR / 'h11' / 'static'  # ✅ تأكد من أن static داخل مجلد h11
+    BASE_DIR / 'h11' / 'static'  # المجلد الذي تضع فيه ملفات CSS/JS
 ]
+STATIC_ROOT = BASE_DIR / 'staticfiles'  # مجلد تجميع static عند استخدام collectstatic
 
 # ✅ ملفات الوسائط (Media)
 MEDIA_URL = '/media/'

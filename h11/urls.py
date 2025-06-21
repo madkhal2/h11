@@ -1,15 +1,16 @@
 from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
-from django.conf.urls.static import static  # ⬅ هذا السطر يضيف دعم الملفات الثابتة
+from django.conf.urls.static import static  # ⬅ دعم static و media
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('store.urls')),       # أو أي تطبيق رئيسي يعرض الصفحة الرئيسية
+    path('', include('store.urls')),           # التطبيق الرئيسي
     path('accounts/', include('accounts.urls')),
     path('orders/', include('orders.urls')),
 ]
 
-# ✅ هذا الجزء في نهاية الملف لتفعيل عرض الملفات الثابتة أثناء التطوير
+# ✅ دعم static و media أثناء التطوير
 if settings.DEBUG:
-    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATICFILES_DIRS[0])
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -10,7 +10,7 @@
     <img src="{% static 'images/devices_banner.png' %}" alt="Devices Banner" style="max-width: 100%; height: auto;">
   </section>
 
-  <!-- أقسام المنتجات -->
+  <!-- أقسام المنتجات الثابتة -->
   <section style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px;">
     <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); text-align: center;">
       <img src="{% static 'images/phone.png' %}" alt="Phones" style="height: 80px;">
@@ -26,6 +26,26 @@
       <img src="{% static 'images/watches.png' %}" alt="Smart Watches" style="height: 80px;">
       <h3 style="color: #023E8A;">ساعات ذكية</h3>
       <p>ابق متصلاً بأسلوب عصري وصحي طوال اليوم</p>
+    </div>
+  </section>
+
+  <!-- ✅ المنتجات المضافة من قاعدة البيانات -->
+  <section style="margin-top: 60px;">
+    <h2 style="color: #0077b6; font-size: 28px; margin-bottom: 20px;">المنتجات الجديدة</h2>
+    
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 25px;">
+      {% for product in products %}
+        <div style="background-color: white; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); overflow: hidden;">
+          <img src="{{ product.image.url }}" alt="{{ product.name }}" style="width: 100%; height: 200px; object-fit: cover;">
+          <div style="padding: 15px;">
+            <h3 style="font-size: 1.2rem; color: #222;">{{ product.name }}</h3>
+            <p style="color: #555; font-size: 0.9rem;">{{ product.description|truncatewords:15 }}</p>
+            <p style="color: #e63946; font-weight: bold; margin-top: 10px;">{{ product.price }} ريال</p>
+          </div>
+        </div>
+      {% empty %}
+        <p>لا توجد منتجات متاحة حالياً.</p>
+      {% endfor %}
     </div>
   </section>
 
