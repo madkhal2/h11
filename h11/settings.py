@@ -46,7 +46,7 @@ ROOT_URLCONF = 'h11.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates'],  # هذا يربط C:\Users\Weaam\h11\templates
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -93,11 +93,13 @@ USE_I18N = True
 USE_L10N = True
 USE_TZ = True
 
-# الملفات الثابتة (Static)
+# ✅ الملفات الثابتة (Static)
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [BASE_DIR / "static"]
+STATICFILES_DIRS = [
+    BASE_DIR / 'h11' / 'static'  # ✅ تأكد من أن static داخل مجلد h11
+]
 
-# ملفات الوسائط (Media)
+# ✅ ملفات الوسائط (Media)
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 

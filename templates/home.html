@@ -1,31 +1,31 @@
 {% load static %}
 {% include 'header.html' %}
 
-<main style="font-family: 'Segoe UI', sans-serif; padding: 40px; background: linear-gradient(to bottom, #F8FBFF, #E6F0FA);">
+<main style="padding: 40px; font-family: 'Segoe UI'; background-color: #f5f7fa;">
 
+  <!-- بانر ترحيبي -->
   <section style="text-align: center; margin-bottom: 50px;">
-    <h1 style="font-size: 36px; color: #0077B6;">مرحبًا بك في SmartTech</h1>
-    <p style="font-size: 18px; color: #333;">متجر شامل للأجهزة الإلكترونية الذكية – هواتف، حواسيب، ساعات ذكية وأكثر</p>
-    <img src="{% static 'images/devices_banner.png' %}" alt="Devices Banner" style="max-width: 100%; margin-top: 20px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+    <h1 style="font-size: 36px; color: #0077b6;">مرحباً بك في <strong>SmartTech</strong></h1>
+    <p style="font-size: 18px;">متجر شامل للأجهزة الإلكترونية الذكية – هواتف، حواسيب، ساعات ذكية وأكثر</p>
+    <img src="{% static 'images/devices_banner.png' %}" alt="Devices Banner" style="max-width: 100%; height: auto;">
   </section>
 
+  <!-- أقسام المنتجات -->
   <section style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px;">
-    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); text-align: center;">
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); text-align: center;">
       <img src="{% static 'images/phone.png' %}" alt="Phones" style="height: 80px;">
       <h3 style="color: #023E8A;">هواتف ذكية</h3>
-      <p>أحدث الموديلات من آيفون وسامسونج وغيرها</p>
+      <p>أحدث الموديلات من آيفون وسامسونج بأسعار تنافسية</p>
     </div>
-
-    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); text-align: center;">
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); text-align: center;">
       <img src="{% static 'images/laptop.png' %}" alt="Laptops" style="height: 80px;">
       <h3 style="color: #023E8A;">أجهزة لابتوب</h3>
-      <p>تشكيلة واسعة لأجهزة العمل والدراسة والألعاب</p>
+      <p>تشكيلة ممتازة لأجهزة الدراسة والعمل والألعاب</p>
     </div>
-
-    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); text-align: center;">
-      <img src="{% static 'images/watch.png' %}" alt="Smart Watches" style="height: 80px;">
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); text-align: center;">
+      <img src="{% static 'images/watches.png' %}" alt="Smart Watches" style="height: 80px;">
       <h3 style="color: #023E8A;">ساعات ذكية</h3>
-      <p>ابقَ متصلاً بأسلوب عصري ومريح</p>
+      <p>ابق متصلاً بأسلوب عصري وصحي طوال اليوم</p>
     </div>
   </section>
 
