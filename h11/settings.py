@@ -9,13 +9,18 @@ load_dotenv()
 # المسار الأساسي للمشروع
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# مفتاح التشفير (قم بتغييره في بيئة الإنتاج)
+# مفتاح التشفير (آمن من .env أو مفتاح افتراضي)
 SECRET_KEY = os.getenv('SECRET_KEY', 'django-insecure-ضع_مفتاحك_الخاص_هنا')
 
-# وضع التصحيح
-DEBUG = True
+# وضع التصحيح حسب بيئة التشغيل
+DEBUG = os.getenv('DEBUG', 'True') == 'True'
 
-ALLOWED_HOSTS = []
+# السماح للمضيفين الموثوقين، مثل Render و localhost
+ALLOWED_HOSTS = [
+    'h11-2iku.onrender.com',  # رابط Render
+    'localhost',
+    '127.0.0.1'
+]
 
 # التطبيقات المثبتة
 INSTALLED_APPS = [
@@ -46,6 +51,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+# إعدادات المسارات
 ROOT_URLCONF = 'h11.urls'
 
 TEMPLATES = [
@@ -66,7 +72,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'h11.wsgi.application'
 
-# ✅ إعداد قاعدة البيانات من متغير البيئة
+# إعداد قاعدة البيانات من متغير البيئة
 DATABASES = {
     'default': dj_database_url.config(
         default=os.getenv('DATABASE_URL'),
@@ -74,7 +80,7 @@ DATABASES = {
     )
 }
 
-# تحقق من كلمات المرور
+# التحقق من كلمات المرور
 AUTH_PASSWORD_VALIDATORS = [
     {'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator'},
     {'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator'},
@@ -82,18 +88,19 @@ AUTH_PASSWORD_VALIDATORS = [
     {'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator'},
 ]
 
+# اللغة والتوقيت
 LANGUAGE_CODE = 'ar'
 TIME_ZONE = 'Asia/Riyadh'
 USE_I18N = True
 USE_L10N = True
 USE_TZ = True
 
-# ✅ إعداد الملفات الثابتة
+# إعداد الملفات الثابتة
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [BASE_DIR / 'h11' / 'static']
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 
-# ✅ إعداد Cloudinary لتخزين الوسائط
+# إعداد الوسائط باستخدام Cloudinary
 CLOUDINARY_STORAGE = {
     'CLOUD_NAME': 'dgvoyuawe',
     'API_KEY': '155166337516544',
@@ -101,4 +108,5 @@ CLOUDINARY_STORAGE = {
 }
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
+# الحقل التلقائي
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
