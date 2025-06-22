@@ -14,6 +14,7 @@ ALLOWED_HOSTS = []
 
 # التطبيقات المثبتة
 INSTALLED_APPS = [
+    # تطبيقات Django الافتراضية
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -26,7 +27,7 @@ INSTALLED_APPS = [
     'store',
     'orders',
 
-    # Cloudinary
+    # تطبيقات Cloudinary لتخزين الصور
     'cloudinary',
     'cloudinary_storage',
 ]
@@ -46,7 +47,7 @@ MIDDLEWARE = [
 # إعدادات الروابط
 ROOT_URLCONF = 'h11.urls'
 
-# القوالب (templates)
+# إعدادات القوالب (Templates)
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -63,10 +64,10 @@ TEMPLATES = [
     },
 ]
 
-# WSGI
+# إعدادات WSGI
 WSGI_APPLICATION = 'h11.wsgi.application'
 
-# قاعدة البيانات
+# إعدادات قاعدة البيانات
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -76,35 +77,25 @@ DATABASES = {
 
 # التحقق من كلمات المرور
 AUTH_PASSWORD_VALIDATORS = [
-    {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
-    },
+    {'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator'},
+    {'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator'},
+    {'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator'},
+    {'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator'},
 ]
 
-# اللغة والتوقيت
+# إعدادات اللغة والمنطقة الزمنية
 LANGUAGE_CODE = 'ar'
 TIME_ZONE = 'Asia/Riyadh'
 USE_I18N = True
 USE_L10N = True
 USE_TZ = True
 
-# ✅ الملفات الثابتة (Static)
+# ✅ إعدادات الملفات الثابتة (Static Files)
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [
-    BASE_DIR / 'h11' / 'static'
-]
+STATICFILES_DIRS = [BASE_DIR / 'h11' / 'static']
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 
-# ✅ Cloudinary كخدمة لتخزين الصور (Media)
+# ✅ إعدادات Cloudinary لتخزين الوسائط (Media Files)
 CLOUDINARY_STORAGE = {
     'CLOUD_NAME': 'dgvoyuawe',
     'API_KEY': '155166337516544',
@@ -113,5 +104,5 @@ CLOUDINARY_STORAGE = {
 
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
-# الحقول التلقائية
+# إعداد الحقول التلقائية
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
