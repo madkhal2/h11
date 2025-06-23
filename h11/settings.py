@@ -15,7 +15,7 @@ SECRET_KEY = os.getenv('SECRET_KEY', 'django-insecure-ضع_مفتاحك_الخا
 # وضع التصحيح حسب بيئة التشغيل
 DEBUG = os.getenv('DEBUG', 'True') == 'True'
 
-# السماح للمضيفين الموثوقين، مثل Render و localhost
+# السماح للمضيفين الموثوقين
 ALLOWED_HOSTS = [
     'h11-2iku.onrender.com',  # رابط Render
     'localhost',
@@ -51,7 +51,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-# إعدادات المسارات
+# إعداد المسارات
 ROOT_URLCONF = 'h11.urls'
 
 TEMPLATES = [
@@ -72,13 +72,25 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'h11.wsgi.application'
 
-# إعداد قاعدة البيانات باستخدام dj_database_url و .env
-DATABASES = {
-    'default': dj_database_url.config(
-        default=os.getenv('DATABASE_URL'),  # إذا كان لديك DATABASE_URL في .env
-        conn_max_age=600
-    )
-}
+# إعداد قاعدة البيانات:
+if os.getenv('RENDER') == 'True':
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': 'db_h11s',
+            'USER': 'db_h11s_user',
+            'PASSWORD': '5frGD8CMlJaRKEX2NGfKssZonCwtToQW',
+            'HOST': 'dpg-d1c175muk2gs73a7t7v0-a',
+            'PORT': '5432',
+        }
+    }
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
+    }
 
 # التحقق من كلمات المرور
 AUTH_PASSWORD_VALIDATORS = [
@@ -100,7 +112,7 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [BASE_DIR / 'h11' / 'static']
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 
-# إعداد الوسائط باستخدام Cloudinary
+# إعداد Cloudinary
 CLOUDINARY_STORAGE = {
     'CLOUD_NAME': os.getenv('CLOUDINARY_CLOUD_NAME'),
     'API_KEY': os.getenv('CLOUDINARY_API_KEY'),
