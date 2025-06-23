@@ -72,10 +72,10 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'h11.wsgi.application'
 
-# إعداد قاعدة البيانات من متغير البيئة
+# إعداد قاعدة البيانات باستخدام dj_database_url و .env
 DATABASES = {
     'default': dj_database_url.config(
-        default=os.getenv('DATABASE_URL'),
+        default=os.getenv('DATABASE_URL'),  # إذا كان لديك DATABASE_URL في .env
         conn_max_age=600
     )
 }
@@ -102,11 +102,19 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 # إعداد الوسائط باستخدام Cloudinary
 CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': 'dgvoyuawe',
-    'API_KEY': '155166337516544',
-    'API_SECRET': 'gJJN1t6KXbyiSyPwVMR3gAYrh_I',
+    'CLOUD_NAME': os.getenv('CLOUDINARY_CLOUD_NAME'),
+    'API_KEY': os.getenv('CLOUDINARY_API_KEY'),
+    'API_SECRET': os.getenv('CLOUDINARY_API_SECRET'),
 }
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+
+# إعداد البريد الإلكتروني
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = os.getenv('EMAIL_HOST')
+EMAIL_PORT = int(os.getenv('EMAIL_PORT', 587))
+EMAIL_USE_TLS = os.getenv('EMAIL_USE_TLS', 'True') == 'True'
+EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
 
 # الحقل التلقائي
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
